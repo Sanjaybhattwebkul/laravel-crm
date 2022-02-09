@@ -109,10 +109,7 @@ class UserController extends Controller
 
         try {
             Mail::queue(new Create($admin));
-        } catch (\Exception $e) {
-            //report($e);
-            session()->flash('success', $e->getMessage());
-        }
+        } catch (\Exception $e) {}
 
         Event::dispatch('settings.user.create.after', $admin);
 
